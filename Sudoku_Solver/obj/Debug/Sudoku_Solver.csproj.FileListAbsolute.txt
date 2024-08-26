@@ -5,3 +5,10 @@ C:\Users\aarnjunk\source\repos\Sudoku_Solver\Sudoku_Solver\obj\Debug\Sudoku_Solv
 C:\Users\aarnjunk\source\repos\Sudoku_Solver\Sudoku_Solver\obj\Debug\Sudoku_Solver.csproj.CoreCompileInputs.cache
 C:\Users\aarnjunk\source\repos\Sudoku_Solver\Sudoku_Solver\obj\Debug\Sudoku_Solver.exe
 C:\Users\aarnjunk\source\repos\Sudoku_Solver\Sudoku_Solver\obj\Debug\Sudoku_Solver.pdb
+C:\Users\aarnjunk\Documents\2_Ohjelmointi\SudokuSolver_WIP\Sudoku_Solver\bin\Debug\Sudoku_Solver.exe.config
+C:\Users\aarnjunk\Documents\2_Ohjelmointi\SudokuSolver_WIP\Sudoku_Solver\bin\Debug\Sudoku_Solver.exe
+C:\Users\aarnjunk\Documents\2_Ohjelmointi\SudokuSolver_WIP\Sudoku_Solver\bin\Debug\Sudoku_Solver.pdb
+C:\Users\aarnjunk\Documents\2_Ohjelmointi\SudokuSolver_WIP\Sudoku_Solver\obj\Debug\Sudoku_Solver.csproj.AssemblyReference.cache
+C:\Users\aarnjunk\Documents\2_Ohjelmointi\SudokuSolver_WIP\Sudoku_Solver\obj\Debug\Sudoku_Solver.csproj.CoreCompileInputs.cache
+C:\Users\aarnjunk\Documents\2_Ohjelmointi\SudokuSolver_WIP\Sudoku_Solver\obj\Debug\Sudoku_Solver.exe
+C:\Users\aarnjunk\Documents\2_Ohjelmointi\SudokuSolver_WIP\Sudoku_Solver\obj\Debug\Sudoku_Solver.pdb
