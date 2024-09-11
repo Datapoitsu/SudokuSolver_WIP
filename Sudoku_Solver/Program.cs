@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Sudoku_Solver
 {
@@ -6,6 +7,7 @@ namespace Sudoku_Solver
     {
         static void Main(string[] args)
         {
+
             // A = 1, B = 2...
             /*int[] Data = new int[]
             {
@@ -20,13 +22,8 @@ namespace Sudoku_Solver
                 0,0,0,0,8,0,0,7,9,
             };*/
 
-            int[] PureSet = new int[]
-            {
-                1,2,3,4,
-                3,4,1,2,
-                2,1,4,3,
-                4,3,2,1,
-            };
+            int[] PureSet = calculatePureSet(3);
+            PrintSudoku(PureSet);
 
             int[] Data = new int[]
             {
@@ -36,9 +33,10 @@ namespace Sudoku_Solver
                 0,0,3,0,
             };
 
-            int[] Valuation = Check(Data, PureSet);
+            //int[] Valuation = Check(Data, PureSet);
 
-            Data = FlipDiagonal2(Data);
+            //Data = FlipDiagonal2(Data);
+            
             /*
             Data = SwapBands(Data, 0, 1);
             Data = SwapStacks(Data, 0, 1);
@@ -56,44 +54,67 @@ namespace Sudoku_Solver
             */
 
 
-            PrintSudoku(Data);
+            //PrintSudoku(Data);
             //CountNumber(Data);
         }
 
-        static int[] Check(int[] D, int[] P)
+        static int[] calculatePureSet(int size)
         {
-            int size = (int)Math.Sqrt(Math.Sqrt(D.Length));
-            float[] v = new float[D.Length];
+            int[] data = new int[(int)Math.Pow(size,4)];
+            int[] row = new int[(int)Math.Pow(size, 2)];
 
-            int[] Moves = new int[6]; 
-            Moves[0] = Evaluate(RotateClockWise(D),P);
-            Moves[1] = Evaluate(RotateCounterClockWise(D),P);
-            Moves[2] = Evaluate(FlipHorizontal(D),P);
-            Moves[3] = Evaluate(FlipVertical(D),P);
-            Moves[4] = Evaluate(FlipDiagonal(D),P);
-            Moves[5] = Evaluate(FlipDiagonal2(D),P);
-
-            for(int i = 0; i < Moves.Length; i++)
+            for(int i = 0; i < (int)Math.Pow(size,2); i++)
             {
-                Console.WriteLine(i + ": " + Moves[i]);
+                row[i] = i + 1;
             }
-            //Kuusi käännöstä
-            //Rivit, sarakkeet, bandit ja stackit.
-            return Moves;
-        }
 
-        static int Evaluate(int[] D, int[] H)
-        {
-            int v = 0;
-            for(int i = 0; i < D.Length; i++)
+            for(int y = 0; y < Math.Pow(size,2); y++)
             {
-                if (D[i] == H[i])
+                for(int i = 0; i < row.Length; i++)
                 {
-                    v += 1;
+                    data[y * row.Length + i] = row[i];
+                }
+
+                RotateArray(row, size);
+
+                if(y % 3 == 0 && y > 0)
+                {
+
                 }
             }
-            return v;
+
+            return data;
         }
+
+        static int[] RotateArray(int[] data, int n)
+        {
+            if (n % data.Length == 0)
+            {
+                return data;
+            }
+            n = n % data.Length;
+            if (n < 0)
+            {
+                n = data.Length - Math.Abs(n);
+            }
+
+            int[] holder = new int[Math.Abs(n)];
+            for(int i = 0; i < holder.Length; i++)
+            {
+                holder[i] = data[i];
+            }
+            for(int i = 0; i < data.Length - holder.Length; i++)
+            {
+                data[i] = data[(i + data.Length + n) % data.Length];
+            }
+            for(int i = 0; i < holder.Length; i++)
+            {
+                data[i + data.Length - holder.Length] = holder[i];
+            }
+
+            return data;
+        }
+
         static int[] RotateClockWise(int[] D)
         {
             int size = (int)Math.Sqrt(Math.Sqrt(D.Length));
@@ -267,6 +288,21 @@ namespace Sudoku_Solver
                     }
                 }
             }
+        }
+
+        static void printArray(int[] data)
+        {
+            string s = "";
+            for(int i = 0; i < data.Length; i++)
+            {
+                s += data[i];
+                if (i != data.Length - 1)
+                {
+                    s += ", ";
+                }
+            }
+            Console.WriteLine("Printing array: ");
+            Console.WriteLine(s);
         }
 
         static void CountNumber(int[] D)
